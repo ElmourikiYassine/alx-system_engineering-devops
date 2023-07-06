@@ -1,5 +1,6 @@
 # Shell, permissions tasks
- ##Task_0_My_name_is_Betty
+ ##Tasks
 
-	> switche the current user to the user betty
+	> Switche the current user to the user betty.
 
+	> Prints the effective username of the current user.
