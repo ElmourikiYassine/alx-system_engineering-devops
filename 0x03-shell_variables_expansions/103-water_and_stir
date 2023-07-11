@@ -1,2 +1,2 @@
 #!/bin/bash
-echo bestchol#$((water#${LOVE} + stir#${STIR}))
+grep -n "" | grep -E '^[0-9]+[02468]:' -v | cut -d ":" -f 2
