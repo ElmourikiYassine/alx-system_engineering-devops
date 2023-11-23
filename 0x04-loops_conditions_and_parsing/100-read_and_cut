@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Bash script that displays the content of the file /etc/passwd.
+# 
+# The script should only display:
+# 
+# username
+# user id
+# Home directory path for the user Bash script that gives you information about the school file.
+
+file="/etc/passwd"
+while read -r file
+do
+	echo "$file" | cut -d ':' -f 1,3,6
+done < $file
