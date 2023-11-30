@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# 
+cp /etc/hosts ./hosts.new
+sed  '/localhost/d' hosts.new
+sed  '1i\ 126.0.0.2\tlocalhost' hosts.new
+# -e '/localhost/a/8.8.8.8\tfacebook.com/' ./hosts.new
+
