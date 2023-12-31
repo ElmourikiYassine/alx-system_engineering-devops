@@ -1,0 +1,44 @@
+   +----------------------+
+   |    User's Computer   |  	<-- Initiates a request to access www.foobar.com
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |       Internet       |  	<-- Facilitates data transmission between user and servers
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |   Domain Registrar   |  	<-- Manages the registration of the domain www.foobar.com
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |      DNS Server      |	<-- Resolves www.foobar.com to the load balancer's IP
+   +----------------------+
+              |
+              v
+   +-------------------------+
+   | Load Balancer (HAproxy) | 	<-- Distributes incoming traffic between servers
+   +-------------------------+
+        |                |
+   +----+-----+     +----+-----+
+   | Server 1 |     | Server 2 |  <-- Physical or virtual machines hosting the infrastructure
+   +----+-----+     +----+-----+
+       |              |
+   +----------------------+
+   |   Web Server (Nginx) |  <-- Handles HTTP requests, serves static content, and forwards dynamic requests
+   +----------------------+
+              |
+   +----------------------+
+   |      App Server      |  <-- Executes application logic and processes dynamic content
+   +----------------------+
+              |
+   +----------------------+
+   |   Application Files  |  <-- Code base for the website
+   +----------------------+
+              |
+   +----------------------+
+   |    Database (MySQL)  |  <-- Stores and retrieves data for the website
+   +----------------------+
+

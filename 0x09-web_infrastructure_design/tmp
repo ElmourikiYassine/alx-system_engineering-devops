@@ -1,0 +1,45 @@
+   +----------------------+
+   |   User's Computer    |  <-- Initiates a request to access www.foobar.com
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |   Internet           |  <-- Facilitates data transmission between user and servers
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |   Domain Registrar   |  <-- Manages the registration of the domain www.foobar.com
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |   DNS Server         |  <-- Resolves www.foobar.com to the server's IP (8.8.8.8)
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |   www.foobar.com     |  <-- Domain points to server's IP (8.8.8.8)
+   +----------------------+
+              |
+              v
+   +----------------------+
+   |   Server (8.8.8.8)   |  <-- Physical or virtual machine hosting the entire infrastructure
+   +----------------------+
+              |
+   +----------------------+
+   |   Web Server (Nginx) |  <-- Handles HTTP requests, serves static content, and forwards dynamic requests
+   +----------------------+
+              |
+   +----------------------+
+   |   App Server         |  <-- Executes application logic and processes dynamic content
+   +----------------------+
+              |
+   +----------------------+
+   |   Application Files |  <-- Code base for the website
+   +----------------------+
+              |
+   +----------------------+
+   |   Database (MySQL)   |  <-- Stores and retrieves data for the website
+   +----------------------+
+

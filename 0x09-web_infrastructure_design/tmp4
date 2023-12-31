@@ -1,0 +1,44 @@
+Specifics:
+
+Load Balancer :
+Purpose: Distributes incoming traffic between multiple servers.
+Why: Improves scalability and ensures high availability by distributing the load.
+Distribution Algorithm: Configured for optimal traffic distribution (e.g., round-robin, least connections).
+Active-Active Setup: Enables even distribution of traffic across multiple servers.
+Server 1 and Server 2:
+
+Purpose: Physical or virtual machines hosting the infrastructure.
+Why: Introduces redundancy for increased reliability and scalability.
+Web Server (Nginx):
+
+Purpose: Handles HTTP requests, serves static content, and forwards dynamic requests.
+Why: Efficiently manages web traffic and optimizes resource utilization.
+App Server:
+
+Purpose: Executes application logic and processes dynamic content.
+Why: Separates application processing from web serving for better scalability.
+Application Files:
+
+Purpose: Code base for the website.
+Why: Contains the application logic and resources required for website functionality.
+Database (MySQL):
+
+Purpose: Stores and retrieves data for the website.
+Why: Centralized data storage for the application.
+
+-----------------------------------------------------
+
+Issues:
+
+SPOF (Single Point of Failure):
+
+Where: Load balancer becomes a potential single point of failure.
+Solution: Consider implementing redundancy for the load balancer.
+Security:
+
+Issues: Lack of firewall and HTTPS.
+Solution: Implement firewalls to enhance security and enable HTTPS for encrypted communication.
+Monitoring Absence:
+
+Issue: No monitoring tools in place.
+Solution: Implement monitoring tools for performance tracking and issue detection.

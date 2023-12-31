@@ -1,0 +1,8 @@
+Issues:
+
+SPOF (Single Point of Failure): Entire system relies on a single server, risking downtime.
+
+Downtime during Maintenance: Restarting the web server for code deployment leads 
+to downtime.
+
+Scaling Issue: Difficult to scale if there is a surge in incoming traffic.
