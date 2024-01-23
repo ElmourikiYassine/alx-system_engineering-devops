@@ -1,6 +1,25 @@
 #!/usr/bin/env bash
-# Install nginx web server
+# Install nginx
 
-sudo apt-get -y install nginx
+sudo apt install -y nginx
 echo "Hello World!" > /usr/share/nginx/html/index.html
+
+directory="/etc/nginx/sites-available"
+
+if [[ ! -d "$directory" ]]; then
+        mkdir "/etc/nginx/sites-available"
+fi
+
+mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+
+echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /usr/share/nginx/html/;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+}" > /etc/nginx/conf.d/default.conf
+
 sudo nginx -s reload
