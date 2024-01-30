@@ -8,6 +8,26 @@ HOSTNAME_PART=$(hostname | cut -d '-' -f 2-3)
 # Define the custom header value (hostname of the server)
 HEADER_VALUE=$HOSTNAME_PART
 
+mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+
+echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /usr/share/nginx/html/;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+}" > /etc/nginx/conf.d/default.conf
+
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/conf.d/default.conf
+
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+new_string="index index.html index.htm index.nginx-debian.html;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/usr\/share\/nginx\/html\/;\n\t\tinternal;\n\t}"
+sudo sed -i "s/index index.html index.htm index.nginx-debian.html;/$new_string/" /etc/nginx/conf.d/default.conf
+
 # Add the custom header to the Nginx configuration
 sudo sed -i "/server_name _;/a \\\n\tadd_header X-Served-By $HEADER_VALUE;" /etc/nginx/conf.d/default.conf
 
