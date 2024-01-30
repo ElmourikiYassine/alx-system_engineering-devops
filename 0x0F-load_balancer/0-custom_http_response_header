@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Install Nginx if not already installed
+sudo apt-get update
+sudo apt-get install -y nginx
+
+HOSTNAME_PART=$(hostname | cut -d '-' -f 2-3)
+# Define the custom header value (hostname of the server)
+HEADER_VALUE=$HOSTNAME_PART
+
+# Add the custom header to the Nginx configuration
+sudo sed -i "/server_name _;/a \\\n\tadd_header X-Served-By $HEADER_VALUE;" /etc/nginx/conf.d/default.conf
+
+# Restart Nginx to apply the changes
+sudo service nginx restart
