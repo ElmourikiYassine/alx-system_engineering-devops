@@ -22,3 +22,4 @@ EOF
 # Ensure HAproxy can be managed via init script
 sudo systemctl enable haproxy
 sudo systemctl restart haproxy
+
