@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+
+# Function to perform DNS lookup and display information
+check_dns() {
+    local domain=$1
+    local subdomain=$2
+    local record_type="A"
+    
+    if [ -n "$subdomain" ]; then
+        dig_output=$(dig "$subdomain.$domain" +short)
+        subdomain_info "The subdomain $subdomain" "$record_type" "$dig_output"
+    else
+        subdomains=("www" "lb-01" "web-01" "web-02")
+        for sub in "${subdomains[@]}"; do
+            dig_output=$(dig "$sub.$domain" +short)
+            subdomain_info "The subdomain $sub" "$record_type" "$dig_output"
+        done
+    fi
+}
+
+# Function to display subdomain information
+subdomain_info() {
+    local subdomain_info="$1 is a $2 record"
+    local dig_output="$3"
+    
+    if [ -n "$dig_output" ]; then
+        echo "$subdomain_info and points to $dig_output"
+    else
+        echo "$subdomain_info, but no record found"
+    fi
+}
+
+# Check the number of arguments
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    display_usage
+fi
+
+# Extract arguments
+domain=$1
+subdomain=$2
+
+# Call the function to check DNS information
+check_dns "$domain" "$subdomain"
